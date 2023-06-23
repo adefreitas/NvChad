@@ -64,4 +64,31 @@ require("lspconfig").lua_ls.setup {
   },
 }
 
+require("lspconfig").tsserver.setup {
+  on_attach = M.on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx"},
+  cmd = {"typescript-language-server", "--stdio"}
+}
+
+require("lspconfig").eslint.setup {
+  on_attach = M.on_attach,
+  bin = "eslint",
+  code_actions = {
+    enable = true,
+    apply_on_save = {
+      enable = true,
+      types = { "directive", "problem", "suggestion", "layout" },
+    },
+    disable_rule_comment = {
+      enable = true,
+      location = "separate_line", -- or `same_line`
+    },
+  },
+  diagnostics = {
+    enable = true,
+    report_unused_disable_directives = false,
+    run_on = "type", -- or `save`
+  }
+}
+
 return M

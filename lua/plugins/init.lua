@@ -265,6 +265,11 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+  -- Copilot
+  {
+    "github/copilot.vim",
+    lazy = false,
+  }
 }
 
 local config = require("core.utils").load_config()
